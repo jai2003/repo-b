@@ -1,0 +1,12 @@
+{
+  "name": "repo-b",
+  "version": "1.0.0",
+  "description": "Repo B depends on Repo A",
+  "dependencies": {
+    "repo-a": "git+ssh://git@github.com:<your_org>/repo-a.git"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "build": "echo Building Repo B"
+  }
+}
