@@ -1,28 +1,36 @@
 pipeline {
     agent any
+
     stages {
         stage('Checkout') {
             steps {
-                git branch: '*/main', url: 'https://github.com/jai2003/repo-b.git'
+                git branch: 'main', url: 'https://github.com/jai2003/repo-b.git'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                echo 'Installing dependencies...'
+                sh 'npm install'
             }
         }
         stage('Build') {
             steps {
                 echo 'Building the project...'
-                sh 'make build' // Replace with your actual build command
+                sh 'npm run build'
             }
         }
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'make test' // Replace with your actual test command
+                sh 'npm test'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying application...'
-                sh 'make deploy' // Replace with your actual deployment command
+                sh 'npm run start'
             }
         }
     }
 }
+
