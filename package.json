@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "Repo B depends on Repo A",
   "dependencies": {
-    "repo-a": "git+ssh://git@github.com:<your_org>/repo-a.git"
+    "repo-a": "git+ssh://git@github.com:jai2003/repo-a.git"
   },
   "scripts": {
-    "start": "node index.js",
-    "build": "echo Building Repo B"
+    "prepare": "npm install",
+    "install": "npm ci",
+    "build": "echo 'Building Repo B' && npm run prepare",
+    "test": "echo 'Running tests' && exit 0",
+    "start": "node index.js"
   }
 }
